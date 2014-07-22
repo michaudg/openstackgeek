@@ -37,7 +37,7 @@ echo;
 # grab our IP 
 read -p "Enter the device name for this rig's NIC (eth0, etc.) : " rignic
 
-rigip=$(/sbin/ifconfig $rignic| sed -n 's/.*inet *addr:\([0-9\.]*\).*/\1/p')
+rigip=$(/sbin/ifconfig $rignic| sed -n '/dr:/{;s/.*dr://;s/ .*//;p;}')
 
 echo;
 echo "#################################################################################################################"
